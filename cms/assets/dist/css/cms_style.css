@@ -1,0 +1,23 @@
+.auth-wrapper .auth-box {
+   background: #fff;
+   padding: 20px;
+   box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
+   max-width: 400px;
+   width: 90%;
+   margin: 10% 0;
+}
+
+.db {
+   width:70%;
+   margin: 0 auto;
+}
+
+.db img {
+   width:100%;
+   
+}
+
+.logo h5 {
+   margin-top: 1em;
+   text-align: center;
+}

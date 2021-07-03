@@ -7,7 +7,7 @@ class errorController extends Controller
 
     function index()
     {
-        $data = ['tittle' => 'Página no encontrada', 'bg' => 'dark'];
+        $data = ['title' => 'Página no encontrada', 'bg' => 'dark'];
         View::render('404', $data);
     }
 }

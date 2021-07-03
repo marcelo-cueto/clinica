@@ -4,7 +4,7 @@ class loginController extends Controller
 {
    function index()
    {
-      $data = ['tittle' => 'Login'];
+      $data = ['title' => 'Login'];
       View::render('login', $data);
    }
 
@@ -21,7 +21,7 @@ class loginController extends Controller
             Redirect::to('home');
          } else $mensaje = 'Identificacion incorrecta';
       } else $mensaje = 'Falta completar datos';
-      Alert::set_msg($mensaje, 'danger');
+      Alert::throw_msg($mensaje, 'danger');
       Redirect::to('login');
    }
 
