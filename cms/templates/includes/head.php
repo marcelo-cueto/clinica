@@ -13,6 +13,7 @@
    <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
    <!-- Custom CSS -->
    <link href="<?= LIBS . 'chartist/dist/chartist.min.css' ?>" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
    <!-- Custom CSS -->
    <link href="<?= CSS . 'style.css' ?>" rel="stylesheet">
    <link href="<?= CSS . 'cms_style.css' ?>" rel="stylesheet">

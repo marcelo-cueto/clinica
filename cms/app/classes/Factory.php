@@ -54,9 +54,12 @@ class Factory
          }
       }
       try {
+         $list = [];
          $result = Db::query($sql, $params);
-         foreach ($result as $res) {
-            $list[] = new $class($res);
+         if ($result) {
+            foreach ($result as $res) {
+               $list[] = new $class($res);
+            }
          }
          return $list;
       } catch (Exception $e) {

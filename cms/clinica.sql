@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-07-2021 a las 18:29:07
+-- Tiempo de generación: 14-07-2021 a las 22:54:45
 -- Versión del servidor: 8.0.25
 -- Versión de PHP: 7.3.5
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `administradores` (
 
 INSERT INTO `administradores` (`id`, `nombres`, `apellidos`, `email`, `clave`, `superadmin`) VALUES
 (1, 'Lisandro', 'Olmos', 'admin@mail.com', '1234', 1),
-(2, 'Lisandro', 'Olmos', 'admin@mail.com', '1234', 1);
+(2, 'Oscar Luis', 'Alzúa', 'admin2@mail.com', '1234', 1);
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `consultores`;
 CREATE TABLE IF NOT EXISTS `consultores` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `img_logo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `img_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
@@ -130,12 +130,30 @@ CREATE TABLE IF NOT EXISTS `profesionales` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombres` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `dni` int NOT NULL,
-  `grado_academico` tinyint NOT NULL,
+  `dni` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `grado_academico` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `director` tinyint NOT NULL,
   `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `profesionales`
+--
+
+INSERT INTO `profesionales` (`id`, `nombres`, `apellidos`, `dni`, `grado_academico`, `director`, `foto`) VALUES
+(1, 'Lisandro', 'Olmos', '111', 'Dr.', 1, ''),
+(2, 'Oscar Luis', 'Alzúa', '112', 'Klgo.', 1, ''),
+(3, 'Eduardo', 'Segal', '1113', 'Dr.', 0, ''),
+(4, 'Eduardo', 'Samara', '1114', 'Dr.', 0, ''),
+(5, 'Gustavo', 'Garrido', '1115', 'Dr.', 0, ''),
+(6, 'María Higinia', 'Guidoni', '1116', '', 0, ''),
+(7, 'Cecilia', 'Taddei Hraste', '1117', '', 0, ''),
+(8, 'Diego Alejandro', 'Passuni', '1118', '', 0, ''),
+(9, 'María Fernanda', 'Raposeiras', '1119', '', 0, ''),
+(10, 'Nelida', 'Sisi', '1120', '', 0, ''),
+(11, 'Marina', 'Alzúa', '1121', '', 0, ''),
+(12, 'Vania', 'Libedinski', '1122', 'Lic', 0, '');
 
 -- --------------------------------------------------------
 

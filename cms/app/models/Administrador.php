@@ -24,7 +24,7 @@ class Administrador
          'email' => $email,
          'clave' => $clave
       ];
-      $result = Factory::get('Administrador', 'administradores', $params);
+      $result = Factory::get(Static::class, 'administradores', $params);
       return $result;
    }
 }

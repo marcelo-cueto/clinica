@@ -11,9 +11,11 @@
 <script src="<?= JS . 'waves.js' ?>"></script>
 <!--Menu sidebar -->
 <script src="<?= JS . 'sidebarmenu.js' ?>"></script>
-<!--Custom JavaScript -->
-<script src="<?= JS . 'custom.min.js' ?>"></script>
 <!--This page JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!--Custom JavaScript -->
+<script src="<?= JS . 'custom.js' ?>"></script>
+<script src="<?= JS . 'custom2.js' ?>"></script>
 <!--chartis chart-->
 <script src="<?= LIBS . 'chartist/dist/chartist.min.js' ?>"></script>
 <script src="<?= LIBS . 'chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' ?>"></script>

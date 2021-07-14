@@ -9,4 +9,10 @@ class AdministradoresController extends Controller
       View::render('administradores', $data);
    }
 
+   function nuevo_administrador()
+   {
+      if (empty($_SESSION['user'])) Redirect::to('login');
+      $data = ['title' => 'Nuevo Administrador'];
+      View::render('nuevoAdministrador', $data);
+   }
 }
