@@ -19,7 +19,7 @@ class LoginController extends Controller
          if (isset($_POST['email']) && isset($_POST['clave'])) {
             $admin = Administrador::validate($_POST['email'], $_POST['clave']);
             if ($admin) {
-               UserSession::set_current_user($admin->id, $admin->nombres);
+               UserSession::set_current_user($admin->id, $admin->nombres, $admin->superadmin);
                Redirect::to('profesionales');
             } else $mensaje = 'Identificacion incorrecta';
          } else $mensaje = 'Falta completar datos';

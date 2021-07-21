@@ -17,14 +17,14 @@
                   <div class="col-lg-4 col-xlg-3 col-md-5">
                      <div class="card">
                         <div class="card-body">
-                           <center class="m-t-30"> <img src="<?= IMAGES . 'equipos/default_img.jpg' ?>" class="rounded-circle" width="150" />
+                           <center class="m-t-30"> <img src="<?= IMAGES . 'equipos/default_img.jpg' ?>" class="rounded-circle img-preview" width="150" />
                               <h4 class="card-title m-t-10">Imagen Equipo</h4>
                               <h6 class="card-subtitle">Formatos: jpg, png, bmp</h6>
                               <h6 class="card-subtitle">Tama&ntilde;o maximo: 3,5 mb</h6>
                               <div class="row text-center justify-content-md-center mt-2">
                                  <div class="form-group">
                                     <div class="col-md-12">
-                                       <input type="file" class="form-control" name="equipo-img" id="equipo-img">
+                                       <input type="file" class="form-control img-input" name="equipo-img" id="equipo-img">
                                     </div>
                                  </div>
                               </div>
@@ -40,13 +40,13 @@
                            <div class="form-group">
                               <label for="equipo-nombre" class="col-md-12">Nombre del equipo</label>
                               <div class="col-md-12">
-                                 <input type="text" class="form-control form-control-line" name="equipo-nombre" id="equipo-nombre">
+                                 <input type="text" class="form-control form-control-line" name="equipo-nombre" id="equipo-nombre" required>
                               </div>
                            </div>
                            <div class="form-group">
-                              <label for="equipo-funcionalidad" class="col-md-12">Nombre de la funcionalidad</label>
+                              <label for="equipo-funcionalidad" class="col-md-12">Funcionalidad del equipo</label>
                               <div class="col-md-12">
-                                 <input type="text" class="form-control form-control-line" name="equipo-funcionalidad" id="equipo-funcionalidad">
+                                 <input type="text" class="form-control form-control-line" name="equipo-funcionalidad" id="equipo-funcionalidad" required>
                               </div>
                            </div>
                            <div class="form-group">

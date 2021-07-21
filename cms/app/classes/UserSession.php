@@ -2,11 +2,12 @@
 
 class UserSession
 {
-   public static function set_current_user($user_id, $user_name)
+   public static function set_current_user($id, $name, $super)
    {
-      if (is_null($user_id)) return;
-      $_SESSION['user']['id'] = $user_id;
-      $_SESSION['user']['name'] = $user_name;
+      if (is_null($id)) return;
+      $_SESSION['user']['id'] = $id;
+      $_SESSION['user']['name'] = $name;
+      $_SESSION['user']['superadmin'] = $super;
       return;
    }
 

@@ -17,7 +17,7 @@
                   <div class="col-lg-4 col-xlg-3 col-md-5">
                      <div class="card">
                         <div class="card-body">
-                           <center class="m-t-30"> <img src="<?= IMAGES . 'consultores/default_logo.png' ?>" class="rounded-circle img-preview" id="preview" width="150" />
+                           <center class="m-t-30"> <img src="<?= IMAGES . 'consultores/default_logo.png' ?>" class="rounded-circle img-preview" width="150" />
                               <h4 class="card-title m-t-10">Imagen Logo</h4>
                               <h6 class="card-subtitle">Formatos: png, jpg, bmp</h6>
                               <h6 class="card-subtitle">Tama&ntilde;o maximo: 3,5 mb</h6>
@@ -40,7 +40,7 @@
                            <div class="form-group">
                               <label for="nombres" class="col-md-12">Nombre del consultor</label>
                               <div class="col-md-12">
-                                 <input type="text" class="form-control form-control-line" name="consultor-nombre" id="consultor-nombre">
+                                 <input type="text" class="form-control form-control-line" name="consultor-nombre" id="consultor-nombre" required>
                               </div>
                            </div>
                            <div class="form-group">

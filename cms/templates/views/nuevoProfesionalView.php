@@ -98,7 +98,7 @@
                            </div>
                            <div class="form-group">
                               <div class="col-sm-12">
-                                 <button class="btn btn-primary">Guardar</button>
+                                 <button class="btn btn-primary mt-3">Guardar</button>
                               </div>
                            </div>
                         </form>

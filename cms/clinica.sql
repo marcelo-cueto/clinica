@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-07-2021 a las 22:54:45
+-- Tiempo de generación: 21-07-2021 a las 21:40:10
 -- Versión del servidor: 8.0.25
 -- Versión de PHP: 7.3.5
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `clave` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `superadmin` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `administradores`
@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `administradores` (
 
 INSERT INTO `administradores` (`id`, `nombres`, `apellidos`, `email`, `clave`, `superadmin`) VALUES
 (1, 'Lisandro', 'Olmos', 'admin@mail.com', '1234', 1),
-(2, 'Oscar Luis', 'Alzúa', 'admin2@mail.com', '1234', 1);
+(2, 'Oscar Luis', 'Alzúa', 'admin2@mail.com', '1234', 1),
+(3, 'prueba', 'prueba', 'algo@mail.com', '123', 0);
 
 -- --------------------------------------------------------
 
@@ -74,7 +75,18 @@ CREATE TABLE IF NOT EXISTS `consultores` (
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `img_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `consultores`
+--
+
+INSERT INTO `consultores` (`id`, `nombre`, `img_logo`) VALUES
+(1, 'Ministerio de Salud, Argentina', 'min_salud.png'),
+(2, 'Centro de Rehabilitación Integra, San Luis, Argentina', 'integra.png'),
+(4, 'Cerenif, Asunción, Paraguay', 'cerenif.png'),
+(5, 'Neurocet, Rio Cuarto, Cordoba, Argentina', 'neurocet.png'),
+(6, 'Hospital León Morra, Cordoba, Argentina', 'morra.png');
 
 -- --------------------------------------------------------
 
@@ -88,9 +100,19 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `funcionalidad` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`id`, `nombre`, `funcionalidad`, `descripcion`, `foto`) VALUES
+(21, '4', 'fafa', 'hh', ''),
+(17, 'algo', 'algo2', 'ii', ''),
+(16, 'algo', 'algo2', 'uu', ''),
+(22, '4', 'algo', '', 'integra.png');
 
 -- --------------------------------------------------------
 
@@ -116,7 +138,9 @@ CREATE TABLE IF NOT EXISTS `especialidades_profesionales` (
   `id` int NOT NULL AUTO_INCREMENT,
   `especialidad_id` int NOT NULL,
   `profesional_id` int NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `especialidad_id` (`especialidad_id`),
+  KEY `profesional_id` (`profesional_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -133,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `profesionales` (
   `dni` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `grado_academico` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `director` tinyint NOT NULL,
-  `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
@@ -166,9 +190,9 @@ CREATE TABLE IF NOT EXISTS `tratamientos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

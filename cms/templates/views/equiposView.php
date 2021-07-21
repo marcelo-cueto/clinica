@@ -36,7 +36,7 @@
                                           <td>
                                              <div class="row">
                                                 <div class="col col-2"><a href="<?= URL . 'equipos/editar/' . $e->id ?>"><i class="mdi mdi-18px mdi-pencil m-r-2 m-l-2"></i></a></div>
-                                                <div class="col col-2"><a href="<?= URL . 'equipos/eliminar/' . $e->id ?>"><i class="mdi mdi-18px mdi-delete m-r-2 m-l-2"></i></a></div>
+                                                <div class="col col-2"><a href="<?= URL . 'equipos/eliminar/' . $e->id ?>" class="delete-element" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-18px mdi-delete m-r-2 m-l-2"></i></a></div>
                                              </div>
                                           </td>
                                        </tr>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="row">
                            <div class="col-sm-4">
-                              <a href="<?= URL . 'equipos/nuevo_equipo' ?>" class="btn btn-success mr-2"><i class="mdi mdi-18px mdi-plus m-r-2 mr-1"></i>Nuevo equipo</a>
+                              <a href="<?= URL . 'equipos/nuevo_equipo' ?>" class="btn btn-primary mr-2"><i class="mdi mdi-18px mdi-plus m-r-2 mr-1"></i>Nuevo equipo</a>
                            </div>
                         </div>
                      </div>
@@ -58,6 +58,25 @@
 
             <!-- Right sidebar -->
             <!-- End Right sidebar -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Est&aacute; seguro de eliminar este elemento?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <a type="button" class="btn btn-danger modal-confirm">S&iacute;</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- End Modal -->
 
          </div>
          <!-- End Container fluid  -->

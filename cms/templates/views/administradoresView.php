@@ -13,97 +13,43 @@
             <!-- Start Page Content -->
             <div class="row">
                <div class="col-12">
-                  <div class="card card-body">
-                     <h4 class="card-title">Default Forms</h4>
-                     <h5 class="card-subtitle"> All bootstrap element classies </h5>
-                     <form class="form-horizontal m-t-30">
-                        <div class="form-group">
-                           <label>Default Text <span class="help"> e.g. "George deo"</span></label>
-                           <input type="text" class="form-control" value="George deo...">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="card-title"><?= Alert::catch_msg() ?></div>
+                        <div class="table-responsive">
+                           <table class="table">
+                              <thead>
+                                 <tr>
+                                    <th scope="col">Nombres</th>
+                                    <th scope="col">Apellidos</th>
+                                    <th scope="col">Email</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <?php if (isset($data['administradores'])) {
+                                    foreach ($data['administradores'] as $a) { ?>
+                                       <tr>
+                                          <td><?= $a->nombres ?></td>
+                                          <td><?= $a->apellidos ?></td>
+                                          <td><?= $a->email ?></td>
+                                          <td>
+                                             <div class="row">
+                                                <div class="col col-2"><a href="<?= URL . 'administradores/editar/' . $a->id ?>"><i class="mdi mdi-18px mdi-pencil m-r-2 m-l-2"></i></a></div>
+                                                <div class="col col-2"><a href="<?= URL . 'administradores/eliminar/' . $a->id ?>" class="delete-element" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-18px mdi-delete m-r-2 m-l-2"></i></a></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                 <?php }
+                                 } ?>
+                              </tbody>
+                           </table>
                         </div>
-                        <div class="form-group">
-                           <label for="example-email">Email <span class="help"> e.g. "example@gmail.com"</span></label>
-                           <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                           <label>Password</label>
-                           <input type="password" class="form-control" value="password">
-                        </div>
-                        <div class="form-group">
-                           <label>Placeholder</label>
-                           <input type="text" class="form-control" placeholder="placeholder">
-                        </div>
-                        <div class="form-group">
-                           <label>Text area</label>
-                           <textarea class="form-control" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                           <label>Read only input</label>
-                           <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
-                        </div>
-                        <div class="form-group">
-                           <fieldset disabled>
-                              <label for="disabledTextInput">Disabled input</label>
-                              <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-                           </fieldset>
-                        </div>
-                        <div class="form-group row p-t-20">
+                        <div class="row">
                            <div class="col-sm-4">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                 <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                 <label class="custom-control-label" for="customCheck2">Check this custom checkbox</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                 <label class="custom-control-label" for="customCheck3">Check this custom checkbox</label>
-                              </div>
-                           </div>
-                           <div class="col-sm-4">
-                              <div class="custom-control custom-radio">
-                                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                 <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-                              </div>
-                              <div class="custom-control custom-radio">
-                                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                 <label class="custom-control-label" for="customRadio2">Toggle this custom radio</label>
-                              </div>
+                              <a href="<?= URL . 'administradores/nuevo_administrador' ?>" class="btn btn-primary mr-2"><i class="mdi mdi-18px mdi-plus m-r-2 mr-1"></i>Nuevo Administrador</a>
                            </div>
                         </div>
-                        <div class="form-group">
-                           <label>Input Select</label>
-                           <select class="custom-select col-12" id="inlineFormCustomSelect">
-                              <option selected>Choose...</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                           </select>
-                        </div>
-                        <div class="form-group">
-                           <label>Default file upload</label>
-                           <input type="file" class="form-control">
-                        </div>
-                        <div class="form-group">
-                           <label>Custom File upload</label>
-                           <div class="input-group">
-                              <div class="input-group-prepend">
-                                 <span class="input-group-text">Upload</span>
-                              </div>
-                              <div class="custom-file">
-                                 <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <label>Helping text</label>
-                           <input type="text" class="form-control" placeholder="Helping text">
-                           <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span>
-                        </div>
-                     </form>
+                     </div>
                   </div>
                </div>
             </div>
@@ -111,6 +57,25 @@
 
             <!-- Right sidebar -->
             <!-- End Right sidebar -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Est&aacute; seguro de eliminar este elemento?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <a type="button" class="btn btn-danger modal-confirm">S&iacute;</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- End Modal -->
 
          </div>
          <!-- End Container fluid  -->
