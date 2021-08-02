@@ -32,11 +32,11 @@ class ConsultoresController extends Controller
                $consultor['img_logo'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('consultores/nuevo_consultor');
+               Redirect::to('consultores');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('consultores/nuevo_consultor');
+            Redirect::to('consultores');
          }
       }
       $result = Factory::insert_array('consultores', $consultor);
@@ -75,11 +75,11 @@ class ConsultoresController extends Controller
                $consultor['img_logo'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('consultores/nuevo_consultor');
+               Redirect::to('consultores');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('consultores/nuevo_consultor');
+            Redirect::to('consultores');
          }
       }
       $result = Factory::update_array('consultores', $consultor, ["`id` = " . $consultor['id']]);

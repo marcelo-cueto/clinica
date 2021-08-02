@@ -36,11 +36,11 @@ class EquiposController extends Controller
                $equipo['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('equipos/nuevo_equipo');
+               Redirect::to('equipos');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('equipos/nuevo_equipo');
+            Redirect::to('equipos');
          }
       }
       $result = Factory::insert_array('equipos', $equipo);
@@ -80,11 +80,11 @@ class EquiposController extends Controller
                $equipo['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('equipos/nuevo_equipo');
+               Redirect::to('equipos');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('equipos/nuevo_equipo');
+            Redirect::to('equipos');
          }
       }
       $result = Factory::update_array('equipos', $equipo, ["`id` = " . $equipo['id']]);

@@ -35,11 +35,11 @@ class TratamientosController extends Controller
                $tratamiento['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('tratamientos/nuevo_tratamiento');
+               Redirect::to('tratamientos');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('tratamientos/nuevo_tratamiento');
+            Redirect::to('tratamientos');
          }
       }
       $result = Factory::insert_array('tratamientos', $tratamiento);
@@ -79,11 +79,11 @@ class TratamientosController extends Controller
                $tratamiento['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('tratamientos/nuevo_tratamiento');
+               Redirect::to('tratamientos');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('tratamientos/nuevo_tratamiento');
+            Redirect::to('tratamientos');
          }
       }
       $result = Factory::update_array('tratamientos', $tratamiento, ["`id` = " . $tratamiento['id']]);

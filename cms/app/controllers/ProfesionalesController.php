@@ -24,7 +24,6 @@ class ProfesionalesController extends Controller
    {
       if (empty($_SESSION['user'])) Redirect::to('login');
       if (empty($_POST['profesional-nombres'])) Redirect::to('profesionales/nuevo_profesional');
-
       $profesional = [
          'nombres' => $_POST['profesional-nombres'],
          'apellidos' => $_POST['profesional-apellidos'],
@@ -40,11 +39,11 @@ class ProfesionalesController extends Controller
                $profesional['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('profesionales/nuevo_profesional');
+               Redirect::to('profesionales');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('profesionales/nuevo_profesional');
+            Redirect::to('profesionales');
          }
       }
       $result = Factory::insert_array('profesionales', $profesional);
@@ -75,7 +74,7 @@ class ProfesionalesController extends Controller
    function reemplazar()
    {
       if (empty($_SESSION['user'])) Redirect::to('login');
-      if (empty($_POST['profesional-nombres'])) Redirect::to('profesionales/nuevo_profesional');
+      if (empty($_POST['profesional-nombres'])) Redirect::to('profesionales');
       $profesional = [
          'id' => $_POST['profesional-id'],
          'nombres' => $_POST['profesional-nombres'],
@@ -92,11 +91,11 @@ class ProfesionalesController extends Controller
                $profesional['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
-               Redirect::to('profesionales/nuevo_profesional');
+               Redirect::to('profesionales');
             }
          } else {
             Alert::throw_msg('Formato de archivo no admitido', 'danger');
-            Redirect::to('profesionales/nuevo_profesional');
+            Redirect::to('profesionales');
          }
       }
       $result = Factory::update_array('profesionales', $profesional, ["`id` = " . $profesional['id']]);
