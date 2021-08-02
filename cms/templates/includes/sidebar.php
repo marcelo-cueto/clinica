@@ -9,7 +9,7 @@
          <ul id="sidebarnav">
             <li class="sidebar-item">
                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= URL.'profesionales' ?>" aria-expanded="false">
-                  <i class="mdi  mdi-account-card-details"></i>
+                  <i class="mdi mdi-account-card-details"></i>
                   <span class="hide-menu">Profesionales</span>
                </a>
             </li>

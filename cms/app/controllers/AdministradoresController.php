@@ -43,11 +43,11 @@ class AdministradoresController extends Controller
       return;
    }
 
-   function editar($cid)
+   function editar($aid)
    {
       if (empty($_SESSION['user'])) Redirect::to('login');
       $data = ['title' => 'Editar Administrador'];
-      $data['administrador'] = Factory::get('Administrador', 'administradores', ['id' => $cid]);
+      $data['administrador'] = Factory::get('Administrador', 'administradores', ['id' => $aid]);
       View::render('editarAdministrador', $data);
    }
 
@@ -74,10 +74,10 @@ class AdministradoresController extends Controller
       return;
    }
 
-   function eliminar($cid)
+   function eliminar($aid)
    {
       if (empty($_SESSION['user'])) Redirect::to('login');
-      $result = Factory::delete('administradores', ["`id` = $cid"]);
+      $result = Factory::delete('administradores', ["`id` = $aid"]);
       if ($result === true) {
          Alert::throw_msg('Elemento eliminado con &eacute;xito', 'success');
       } else {

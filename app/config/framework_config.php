@@ -49,7 +49,7 @@ define('LDB_ENGINE' , 'mysql');
 define('LDB_HOST'   , 'localhost');
 define('LDB_NAME'   , 'mifadu');
 define('LDB_USER'   , 'root');
-define('LDB_PASS'   , 'root');
+define('LDB_PASS'   , '');
 define('LDB_CHARSET', 'utf8');
 
 // Setear conexión en producción o servidor real

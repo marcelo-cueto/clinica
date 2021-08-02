@@ -27,7 +27,9 @@ class ConsultoresController extends Controller
       if (isset($_FILES['consultor-img']['name']) && $_FILES['consultor-img']['name'] != '') {
          if ($_FILES['consultor-img']['type'] == 'image/png' || $_FILES['consultor-img']['type'] == 'image/jpeg' || $_FILES['consultor-img']['type'] == 'image/bmp') {
             if ($_FILES['consultor-img']['size'] < 3670016) {
-               $consultor['img_logo'] = $_FILES['consultor-img']['name'];
+               $ext = pathinfo($_FILES['consultor-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $consultor['img_logo'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('consultores/nuevo_consultor');
@@ -39,7 +41,7 @@ class ConsultoresController extends Controller
       }
       $result = Factory::insert_array('consultores', $consultor);
       if ($result != false) {
-         move_uploaded_file($_FILES['consultor-img']['tmp_name'], ROOT . 'assets/images/consultores/' . $_FILES['consultor-img']['name']);
+         move_uploaded_file($_FILES['consultor-img']['tmp_name'], ROOT . 'assets/images/consultores/' . $nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');
@@ -54,6 +56,7 @@ class ConsultoresController extends Controller
       $data = ['title' => 'Editar Consultor'];
       $data['consultor'] = Factory::get('Consultor', 'consultores', ['id' => $cid]);
       View::render('editarConsultor', $data);
+      return;
    }
 
    function reemplazar()
@@ -67,7 +70,9 @@ class ConsultoresController extends Controller
       if (isset($_FILES['consultor-img']['name']) && $_FILES['consultor-img']['name'] != '') {
          if ($_FILES['consultor-img']['type'] == 'image/png' || $_FILES['consultor-img']['type'] == 'image/jpeg' || $_FILES['consultor-img']['type'] == 'image/bmp') {
             if ($_FILES['consultor-img']['size'] < 3670016) {
-               $consultor['img_logo'] = $_FILES['consultor-img']['name'];
+               $ext = pathinfo($_FILES['consultor-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $consultor['img_logo'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('consultores/nuevo_consultor');
@@ -79,7 +84,7 @@ class ConsultoresController extends Controller
       }
       $result = Factory::update_array('consultores', $consultor, ["`id` = " . $consultor['id']]);
       if ($result === true) {
-         move_uploaded_file($_FILES['consultor-img']['tmp_name'], ROOT . 'assets/images/consultores/' . $_FILES['consultor-img']['name']);
+         move_uploaded_file($_FILES['consultor-img']['tmp_name'], ROOT . 'assets/images/consultores/' . $nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');

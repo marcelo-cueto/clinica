@@ -17,19 +17,22 @@ class TratamientosController extends Controller
       $data = ['title' => 'Nuevo Tratamiento'];
       View::render('nuevoTratamiento', $data);
    }
-   
+
    function insertar()
    {
       if (empty($_SESSION['user'])) Redirect::to('login');
       if (empty($_POST['tratamiento-nombre'])) Redirect::to('tratamientos/nuevo_tratamiento');
       $tratamiento = [
          'nombre' => $_POST['tratamiento-nombre'],
-         'descripcion' => $_POST['tratamiento-descripcion']
+         'descripcion' => $_POST['tratamiento-descripcion'],
+         'programas' => $_POST['tratamiento-programas']
       ];
       if (isset($_FILES['tratamiento-img']['name']) && $_FILES['tratamiento-img']['name'] != '') {
          if ($_FILES['tratamiento-img']['type'] == 'image/png' || $_FILES['tratamiento-img']['type'] == 'image/jpeg' || $_FILES['tratamiento-img']['type'] == 'image/bmp') {
             if ($_FILES['tratamiento-img']['size'] < 3670016) {
-               $tratamiento['foto'] = $_FILES['tratamiento-img']['name'];
+               $ext = pathinfo($_FILES['tratamiento-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $tratamiento['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('tratamientos/nuevo_tratamiento');
@@ -41,7 +44,7 @@ class TratamientosController extends Controller
       }
       $result = Factory::insert_array('tratamientos', $tratamiento);
       if ($result != false) {
-         move_uploaded_file($_FILES['tratamiento-img']['tmp_name'], ROOT . 'assets/images/tratamientos/' . $_FILES['tratamiento-img']['name']);
+         move_uploaded_file($_FILES['tratamiento-img']['tmp_name'], ROOT . 'assets/images/tratamientos/' . $nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');
@@ -65,12 +68,15 @@ class TratamientosController extends Controller
       $tratamiento = [
          'id' => $_POST['tratamiento-id'],
          'nombre' => $_POST['tratamiento-nombre'],
-         'descripcion' => $_POST['tratamiento-descripcion']
+         'descripcion' => $_POST['tratamiento-descripcion'],
+         'programas' => $_POST['tratamiento-programas']
       ];
       if (isset($_FILES['tratamiento-img']['name']) && $_FILES['tratamiento-img']['name'] != '') {
          if ($_FILES['tratamiento-img']['type'] == 'image/png' || $_FILES['tratamiento-img']['type'] == 'image/jpeg' || $_FILES['tratamiento-img']['type'] == 'image/bmp') {
             if ($_FILES['tratamiento-img']['size'] < 3670016) {
-               $tratamiento['foto'] = $_FILES['tratamiento-img']['name'];
+               $ext = pathinfo($_FILES['tratamiento-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $tratamiento['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('tratamientos/nuevo_tratamiento');
@@ -82,7 +88,7 @@ class TratamientosController extends Controller
       }
       $result = Factory::update_array('tratamientos', $tratamiento, ["`id` = " . $tratamiento['id']]);
       if ($result === true) {
-         move_uploaded_file($_FILES['tratamiento-img']['tmp_name'], ROOT . 'assets/images/tratamientos/' . $_FILES['tratamiento-img']['name']);
+         move_uploaded_file($_FILES['tratamiento-img']['tmp_name'], ROOT . 'assets/images/tratamientos/' . $nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');

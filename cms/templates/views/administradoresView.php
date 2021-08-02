@@ -23,6 +23,7 @@
                                     <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Acciones</th>
                                  </tr>
                               </thead>
                               <tbody>

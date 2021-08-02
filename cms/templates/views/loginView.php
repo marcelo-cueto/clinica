@@ -18,17 +18,17 @@
       <!-- ============================================================== -->
       <!-- Login box.scss -->
       <!-- ============================================================== -->
-      <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(<?= IMAGES.'Ingresoa.jpg' ?>) no-repeat center center;">
+      <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(<?= IMAGES . 'Ingresoa.jpg' ?>) no-repeat center center;">
          <div class="auth-box">
             <div id="loginform">
                <div class="logo">
-                  <div class="db"><img src="<?= IMAGES.'logo_color.png' ?>" alt="logo"></div>
+                  <div class="db"><img src="<?= IMAGES . 'logo_color.png' ?>" alt="logo"></div>
                   <h5 class="font-medium m-b-20">Inicio de sesi&oacute;n</h5>
                </div>
                <!-- Form -->
                <div class="row">
                   <div class="col-12">
-                     <form class="form-horizontal m-t-20" id="loginform" action="<?= URL.'login/login' ?>" method="post">
+                     <form class="form-horizontal m-t-20" id="loginform" action="<?= URL . 'login/login' ?>" method="post">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']['token'] ?>">
                         <div class="input-group mb-3">
                            <div class="input-group-prepend">
@@ -54,8 +54,10 @@
                               <button class="btn btn-block btn-lg btn-info" type="submit">Ingresar</button>
                            </div>
                         </div>
-                        <div>
-                           <?= Alert::catch_msg(); ?>
+                        <div class="form-group text-center">
+                           <div class="col-xs-12">
+                              <?= Alert::catch_msg(); ?>
+                           </div>
                         </div>
                      </form>
                   </div>

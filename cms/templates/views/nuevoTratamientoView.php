@@ -50,6 +50,15 @@
                               </div>
                            </div>
                            <div class="form-group">
+                              <label for="tratamiento-programas" class="col-md-12">Programas</label>
+                              <div class="col-md-12">
+                                 <select name="tratamiento-programas" id="tratamiento-programas" class="form-control">
+                                    <option value="0">Programas</option>
+                                    <option value="1">Programas especiales</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="form-group">
                               <div class="col-sm-12">
                                  <button class="btn btn-primary">Guardar</button>
                               </div>

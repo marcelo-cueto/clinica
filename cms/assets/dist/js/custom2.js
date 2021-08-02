@@ -1,12 +1,16 @@
 $(document).ready(function () {
    $('.select2').select2();
 
-   var n = 2;
+   var n = 0;
+   $('.cargos').each(function () {
+      n++;
+   });
+   
    $('#tit-agregar').click(function (event) {
       event.preventDefault();
-      var elem = "<div class='col-md-12 mt-2'><input type='text' class='form-control form-control-line' name='cargo" + n + "' id='cargo" + n + "'></div>";
-      $("#grupo-cargos").append(elem);
       n++;
+      var elem = "<div class='col-md-12 mt-2'><input type='text' class='form-control form-control-line' name='cargos[" + n + "]' id='cargo" + n + "'></div>";
+      $("#grupo-cargos").append(elem);
    });
 
    $('.img-input').change(function (e) {

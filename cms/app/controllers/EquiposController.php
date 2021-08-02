@@ -31,7 +31,9 @@ class EquiposController extends Controller
       if (isset($_FILES['equipo-img']['name']) && $_FILES['equipo-img']['name'] != '') {
          if ($_FILES['equipo-img']['type'] == 'image/png' || $_FILES['equipo-img']['type'] == 'image/jpeg' || $_FILES['equipo-img']['type'] == 'image/bmp') {
             if ($_FILES['equipo-img']['size'] < 3670016) {
-               $equipo['foto'] = $_FILES['equipo-img']['name'];
+               $ext = pathinfo($_FILES['equipo-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $equipo['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('equipos/nuevo_equipo');
@@ -43,7 +45,7 @@ class EquiposController extends Controller
       }
       $result = Factory::insert_array('equipos', $equipo);
       if ($result != false) {
-         move_uploaded_file($_FILES['equipo-img']['tmp_name'], ROOT.'assets/images/equipos/'.$_FILES['equipo-img']['name']);
+         move_uploaded_file($_FILES['equipo-img']['tmp_name'], ROOT.'assets/images/equipos/'.$nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');
@@ -62,7 +64,6 @@ class EquiposController extends Controller
 
    function reemplazar()
    {
-      
       if (empty($_SESSION['user'])) Redirect::to('login');
       if (empty($_POST['equipo-nombre']) || empty($_POST['equipo-id'])) Redirect::to('equipos');
       $equipo = [
@@ -74,7 +75,9 @@ class EquiposController extends Controller
       if (isset($_FILES['equipo-img']['name']) && $_FILES['equipo-img']['name'] != '') {
          if ($_FILES['equipo-img']['type'] == 'image/png' || $_FILES['equipo-img']['type'] == 'image/jpeg' || $_FILES['equipo-img']['type'] == 'image/bmp') {
             if ($_FILES['equipo-img']['size'] < 3670016) {
-               $equipo['foto'] = $_FILES['equipo-img']['name'];
+               $ext = pathinfo($_FILES['equipo-img']['name'], PATHINFO_EXTENSION);
+               $nombreArchivo = time() . ".$ext";
+               $equipo['foto'] = $nombreArchivo;
             } else {
                Alert::throw_msg('Tama&ntilde;o de archivo excede el l&iacute;mite', 'danger');
                Redirect::to('equipos/nuevo_equipo');
@@ -86,7 +89,7 @@ class EquiposController extends Controller
       }
       $result = Factory::update_array('equipos', $equipo, ["`id` = " . $equipo['id']]);
       if ($result === true) {
-         move_uploaded_file($_FILES['equipo-img']['tmp_name'], ROOT . 'assets/images/equipos/' . $_FILES['equipo-img']['name']);
+         move_uploaded_file($_FILES['equipo-img']['tmp_name'], ROOT . 'assets/images/equipos/' . $nombreArchivo);
          Alert::throw_msg('Datos ingresados con &eacute;xito', 'success');
       } else {
          Alert::throw_msg('Disculpe. No se pudo ingresar informaci&oacute;n', 'danger');

@@ -36,7 +36,8 @@ class Factory
       $sql .= ' LIMIT 1';
       try {
          $result = Db::query($sql, $params);
-         return new $class($result[0]);
+         $res = $result == true ? new $class($result[0]) : false;
+         return $res;
       } catch (Exception $e) {
          return $e->getMessage();
       }
