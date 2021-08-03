@@ -23,20 +23,24 @@
             <div id="recoverform">
                <div class="logo">
                   <span class="db"><img src="<?= IMAGES . 'logo_color.png' ?>" alt="logo"></span>
-                  <h5 class="font-medium m-b-20">Olvid&eacute; mi clave</h5>
-                  <span>Ingrese su email para recibir una clave provisoria</span>
+                  <h5 class="font-medium m-b-20">Cambio de clave</h5>
+                  <span>Ingrese la nueva clave que utilizar&aacute;</span>
                </div>
                <div class="row m-t-20">
                   <!-- Form -->
-                  <form class="col-12" action="<?= URL . 'login/enviar_provisoria' ?>" method="post">
+                  <form class="col-12" action="<?= URL . 'login/nueva_clave' ?>" method="post">
                      <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']['token'] ?>">
-                     <!-- email -->
+                     <input type="hidden" name="admin-id" value="<?= $data['id'] ?>">
                      <div class="form-group row">
                         <div class="col-12">
-                           <input class="form-control form-control-lg" type="email" name="email" required placeholder="Email">
+                           <input class="form-control form-control-lg" type="password" name="nueva-clave" required placeholder="Nueva Clave">
                         </div>
                      </div>
-                     <!-- pwd -->
+                     <div class="form-group row">
+                        <div class="col-12">
+                           <input class="form-control form-control-lg" type="password" name="confirmacion-clave" required placeholder="Confirme Clave">
+                        </div>
+                     </div>
                      <div class="row m-t-20">
                         <div class="col-12">
                            <button class="btn btn-block btn-lg btn-primary" type="submit" name="action">Enviar</button>

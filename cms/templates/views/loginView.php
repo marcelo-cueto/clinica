@@ -45,7 +45,7 @@
                         <div class="form-group row">
                            <div class="col-md-12">
                               <div class="custom-control custom-checkbox d-flex align-items-center">
-                                 <a href="javascript:void(0)" id="to-recover" class="text-dark ml-auto"><i class="fa fa-lock m-r-5"></i>Olvid&eacute; mi clave</a>
+                                 <a href="<?= URL . 'login/olvide_clave' ?>" id="to-recover" class="text-dark ml-auto"><i class="fa fa-lock m-r-5"></i>Olvid&eacute; mi clave</a>
                               </div>
                            </div>
                         </div>

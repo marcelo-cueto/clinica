@@ -16,6 +16,7 @@ class Administrador
       if (isset($data['email'])) $this->email = $data['email'];
       if (isset($data['clave'])) $this->clave = $data['clave'];
       if (isset($data['superadmin'])) $this->superadmin = $data['superadmin'];
+      if (isset($data['cambiar_clave'])) $this->cambiar_clave = $data['cambiar_clave'];
    }
 
    public static function validate($email, $clave)
