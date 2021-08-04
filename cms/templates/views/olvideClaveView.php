@@ -36,13 +36,19 @@
                            <input class="form-control form-control-lg" type="email" name="email" required placeholder="Email">
                         </div>
                      </div>
-                     <!-- pwd -->
                      <div class="row m-t-20">
                         <div class="col-12">
                            <button class="btn btn-block btn-lg btn-primary" type="submit" name="action">Enviar</button>
                         </div>
                      </div>
                   </form>
+                  <div class="col-12">
+                     <div class="row m-t-20">
+                        <div class="col-12">
+                           <?= Alert::catch_msg(); ?>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

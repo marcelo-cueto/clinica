@@ -7,6 +7,7 @@ class Administrador
    public $email = null;
    public $clave = null;
    public $superadmin = null;
+   public $cambiar_clave = null;
 
    function __construct($data = [])
    {

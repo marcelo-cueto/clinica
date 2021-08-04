@@ -28,7 +28,7 @@
                </div>
                <div class="row m-t-20">
                   <!-- Form -->
-                  <form class="col-12" action="<?= URL . 'login/nueva_clave' ?>" method="post">
+                  <form class="col-12" action="<?= URL . 'login/nueva_clave/' . $data['id'] ?>" method="post">
                      <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']['token'] ?>">
                      <input type="hidden" name="admin-id" value="<?= $data['id'] ?>">
                      <div class="form-group row">
@@ -47,6 +47,13 @@
                         </div>
                      </div>
                   </form>
+                  <div class="col-12">
+                     <div class="row m-t-20">
+                        <div class="col-12">
+                           <?= Alert::catch_msg(); ?>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
