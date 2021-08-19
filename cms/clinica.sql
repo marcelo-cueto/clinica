@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-08-2021 a las 00:52:00
+-- Tiempo de generación: 19-08-2021 a las 21:54:04
 -- Versión del servidor: 8.0.25
 -- Versión de PHP: 7.3.5
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `clave` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `superadmin` tinyint NOT NULL,
+  `cambiar_clave` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
@@ -43,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `administradores` (
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id`, `nombres`, `apellidos`, `email`, `clave`, `superadmin`) VALUES
-(1, 'Lisandro', 'Olmos', 'admin@mail.com', '1234', 1),
-(2, 'Oscar Luis', 'Alzúa', 'admin2@mail.com', '1234', 1),
-(3, 'prueba', 'prueba', 'algo@mail.com', '123', 0);
+INSERT INTO `administradores` (`id`, `nombres`, `apellidos`, `email`, `clave`, `superadmin`, `cambiar_clave`) VALUES
+(1, 'Lisandro', 'Olmos', 'admin@mail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1, 0),
+(2, 'Oscar Luis', 'Alzúa', 'admin2@mail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1, 0),
+(3, 'prueba', 'prueba', 'algo@mail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `cargos_titulos` (
   `profesional_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `profesional_id` (`profesional_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cargos_titulos`
@@ -97,7 +98,8 @@ INSERT INTO `cargos_titulos` (`id`, `nombre`, `destacar`, `profesional_id`) VALU
 (31, 'Licenciada en Terapia Ocupacional egresada de la Universidad Nacional de San Martín', 0, 9),
 (32, 'Secretaria', 0, 10),
 (33, 'Licenciada en Psicología', 0, 11),
-(34, 'Licenciada en Kinesiología y fisiatría', 0, 12);
+(34, 'Licenciada en Kinesiología y fisiatría', 0, 12),
+(35, '', 0, 8);
 
 -- --------------------------------------------------------
 
@@ -148,9 +150,9 @@ CREATE TABLE IF NOT EXISTS `equipos` (
 --
 
 INSERT INTO `equipos` (`id`, `nombre`, `funcionalidad`, `descripcion`, `foto`) VALUES
-(1, 'Smart Equitest', 'Herramienta de seguimiento y control de tratamientos', 'Se utiliza para trastornos de equilibrio ya que permite medir la capacidad del SNC (Sistema Nervioso Central) y obtiene información que permite ajustar los ejercicios para cada paciente. También es recomendable para tratar el desorden vestibular.', 'equipo1.jpg'),
-(2, 'Tecnología Xcite', 'Rehabilitación intensiva de la marcha', 'Altamente recomendada para la debilidad de los miembros superiores por enfermedades como ACV (Accidente Cerebro Vascular) y rehabilitación intensiva de la marcha ya que es un equipo de Electroterapia farádica FES (estimulación eléctrica funcional) controlado por una computadora para realizar actividades programadas. Puede usarse en miembros superiores o inferiores uni o bilateralmente ya que cuenta con 12 canales de salida.', 'equipo2.jpg'),
-(3, 'Motemed VIVA 2', '-', 'La bicicleta servoasistida, a la que se suma electroterapia FES (estimulación eléctrica funcional), está controlada por una computadora permitiendo a un paciente sin actividad motora de MMII pedalear asistido o resistido por el equipo para lograr movilidad y fuerza si su condición neurológica lo permite. Se puede utilizar tanto en miembros superiores como inferiores', 'equipo3.jpg');
+(1, 'Smart Equitest', 'Herramienta de seguimiento y control de tratamientos', 'Se utiliza para trastornos de equilibrio ya que permite medir la capacidad del SNC (Sistema Nervioso Central) y obtiene información que permite ajustar los ejercicios para cada paciente. También es recomendable para tratar el desorden vestibular.', '1627868521.jpg'),
+(2, 'Tecnología Xcite', 'Rehabilitación intensiva de la marcha', 'Altamente recomendada para la debilidad de los miembros superiores por enfermedades como ACV (Accidente Cerebro Vascular) y rehabilitación intensiva de la marcha ya que es un equipo de Electroterapia farádica FES (estimulación eléctrica funcional) controlado por una computadora para realizar actividades programadas. Puede usarse en miembros superiores o inferiores uni o bilateralmente ya que cuenta con 12 canales de salida.', '1627868573.jpg'),
+(3, 'Motemed VIVA 2', '-', 'La bicicleta servoasistida, a la que se suma electroterapia FES (estimulación eléctrica funcional), está controlada por una computadora permitiendo a un paciente sin actividad motora de MMII pedalear asistido o resistido por el equipo para lograr movilidad y fuerza si su condición neurológica lo permite. Se puede utilizar tanto en miembros superiores como inferiores', '1627868609.jpg');
 
 -- --------------------------------------------------------
 
@@ -234,14 +236,14 @@ CREATE TABLE IF NOT EXISTS `profesionales` (
 INSERT INTO `profesionales` (`id`, `nombres`, `apellidos`, `dni`, `grado_academico`, `director`, `foto`) VALUES
 (1, 'Lisandro', 'Olmos', '', 'Dr.', 1, '1627685239.jpg'),
 (2, 'Oscar Luis', 'Alzúa', '', 'Klgo.', 1, '1627685475.jpg'),
-(3, 'Eduardo', 'Segal', '', 'Dr.', 0, NULL),
-(4, 'Eduardo', 'Samara', '', 'Dr.', 0, NULL),
-(5, 'Gustavo', 'Garrido', '', 'Dr.', 0, NULL),
-(6, 'María Higinia', 'Guidoni', '', '', 0, NULL),
-(7, 'Cecilia', 'Taddei Hraste', '', '', 0, NULL),
-(8, 'Diego Alejandro', 'Passuni', '', '', 0, NULL),
-(9, 'María Fernanda', 'Raposeiras', '', 'Lic.', 0, NULL),
-(10, 'Nelida', 'Sisi', '', '', 0, NULL),
+(3, 'Eduardo', 'Segal', '', 'Dr.', 0, '1627869156.jpeg'),
+(4, 'Eduardo', 'Samara', '', 'Dr.', 0, '1627869228.jpeg'),
+(5, 'Gustavo', 'Garrido', '', 'Dr.', 0, '1627869305.jpeg'),
+(6, 'María Higinia', 'Guidoni', '', 'Lic.', 0, '1627869409.jpg'),
+(7, 'Cecilia', 'Taddei Hraste', '', 'Lic.', 0, '1627869969.jpg'),
+(8, 'Diego Alejandro', 'Passuni', '', 'Lic.', 0, '1627869560.jpg'),
+(9, 'María Fernanda', 'Raposeiras', '', 'Lic.', 0, '1627869671.jpg'),
+(10, 'Nelida', 'Sisi', '', '', 0, '1627869727.jpg'),
 (11, 'Marina', 'Alzúa', '', 'Lic.', 0, '1627687681.jpeg'),
 (12, 'Vania', 'Libedinsky', '', 'Lic.', 0, '1627687743.jpg');
 
@@ -259,16 +261,22 @@ CREATE TABLE IF NOT EXISTS `tratamientos` (
   `programas` tinyint NOT NULL DEFAULT '0',
   `foto` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tratamientos`
 --
 
 INSERT INTO `tratamientos` (`id`, `nombre`, `descripcion`, `programas`, `foto`) VALUES
-(1, 'Evaluación y entrenamiento tecnológico aplicado a la Neurorehabilitación', 'El aporte de la tecnología aplicada a la rehabilitación es fundamental para que las personas logren mejorar su calidad de vida y reinsertarse socialmente.', 0, 'trat1.jpg'),
-(2, 'Laboratorio de rehabilitación de trastornos del equilibrio, balance y riesgo de caídas como disfunciones vestibulares', 'Este método permite diagnósticos que escapan a la simple observación visual y facilita la cuantificación de la alteración.', 0, 'trat2.jpg'),
-(3, 'Rehabilitación de la marcha con reducción parcial del peso corporal', 'El objetivo es reeducar la marcha del paciente en una situación segura donde no hay probabilidad de caídas y traumatismos. La técnica consiste en colocar al paciente dentro de un arnés regulable en altura graduando el peso que debe soportar con sus miembros inferiores y por debajo de él se ubica una cinta de caminar.', 0, 'trat3.jpg');
+(1, 'Evaluación y entrenamiento tecnológico aplicado a la Neurorehabilitación', 'El aporte de la tecnología aplicada a la rehabilitación es fundamental para que las personas logren mejorar su calidad de vida y reinsertarse socialmente.', 0, '1627867707.jpg'),
+(2, 'Laboratorio de rehabilitación de trastornos del equilibrio, balance y riesgo de caídas como disfunciones vestibulares', 'Este método permite diagnósticos que escapan a la simple observación visual y facilita la cuantificación de la alteración.', 0, '1627867807.jpg'),
+(3, 'Rehabilitación de la marcha con reducción parcial del peso corporal', 'El objetivo es reeducar la marcha del paciente en una situación segura donde no hay probabilidad de caídas y traumatismos. La técnica consiste en colocar al paciente dentro de un arnés regulable en altura graduando el peso que debe soportar con sus miembros inferiores y por debajo de él se ubica una cinta de caminar.', 0, '1627867847.jpg'),
+(4, 'Combinación de ortesis con estimulación eléctrica funcional (FES)', 'Permite la rehabilitación de movimientos finos en pacientes con una mejoría parcial del déficit motor. Puede ser utilizada tanto para miembros superiores como para los inferiores.', 0, NULL),
+(5, 'Entrenamiento con bicifes (equipo Motomed)', '.', 0, '1627868038.jpg'),
+(6, 'Entrenamiento del miembro superior afectado (Equipo Xcite)', '.', 0, NULL),
+(7, 'Exoesqueletos robotizados (Rewalk)', 'Un traje biónico -robótico- que ayuda a las personas con diferentes grados de debilidad de extremidades inferiores, incluyendo aquellos con lesiones completas de la médula espinal, a ponerse de pie y caminar con una marcha natural con descarga completa de peso.', 0, '1627868192.jpg'),
+(8, 'Asistencia tecnológica en la marcha', 'Por medio de la utilización del dispositivo Walkaid, se procede a la estimulación eléctrica para la marcha en pacientes con parálisis en sus pies.', 0, '1627868270.jpg'),
+(9, 'Clínica de la Columna', 'Trabajamos el dolor crónico asociado a la patología de la columna vertebral. Un equipo especializado y entrenado en la patología de columna del niño y del adulto podrá evaluar los trastornos y preparar un tratamiento comprehensivo e interdisciplinario. El equipo está constituido por reconocidos profesionales de neurocirugía, kinesiología, terapia ocupacional y psicología.', 0, '1627868404.jpg');
 
 --
 -- Restricciones para tablas volcadas
